@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ServiLuck Cleaning Service</title>
+    <link rel="icon" href="asdasd.png" type="image/png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9f8;
+            color: #333;
+        }
+        header {
+            background-color: rgba(60, 80, 60, 0.3);
+            color: #333;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(15px);
+            height: 65px;
+        }
+        .logo {
+            max-width: 100px;
+            height: auto;
+            margin-right: 20px;
+        }
+        @media (max-width: 768px) {
+            .logo {
+                max-width: 70px;
+            }
+        }
+        nav {
+            position: relative;
+        }
+        .menu-icon {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+        nav ul li {
+            display: inline;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            padding: 10px 15px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: transparent;
+            color: #006400;
+            border-radius: 5px;
+        }
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block;
+            }
+            nav ul {
+                display: none;
+                flex-direction: column;
+                background-color: white;
+                position: absolute;
+                top: 65px;
+                right: 0;
+                width: 200px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+            nav ul.active {
+                display: flex;
+            }
+            nav ul li {
+                text-align: right;
+            }
+            nav ul li a {
+                display: block;
+                padding: 10px;
+            }
+        }
+        section {
+            padding: 40px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            border-radius: 10px;
+        }
+        .alternate-grey {
+            background-color: #f0f0f0;
+            margin: 40px;
+            padding: 50px;
+        }
+        .service {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .service-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .service-card:hover {
+            transform: scale(1.05);
+        }
+        .booking {
+            margin-top: 40px;
+        }
+        .booking form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        .booking input, .booking select, .booking button {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 300px;
+        }
+        .booking button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.booking button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.booking button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.booking button:hover span {
+  padding-right: 25px;
+}
+
+.booking button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+        footer {
+            background-color: white;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+        ul {
+            text-align: left;
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+        ul li {
+            margin-bottom: 8px;
+        }
+        .checklist-section {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        @media (max-width: 768px) {
+            .checklist-section {
+                flex-direction: column;
+            }
+        }
+        .checklist-section > div {
+            flex: 1;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .welcome-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 400px;
+            text-align: center;
+            color: white;
+            background: linear-gradient(rgba(0, 0, 0, 0.205), rgba(0, 0, 0, 0.486)), url('wet-mopping.jpeg') no-repeat center center/cover;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .welcome-text {
+            max-width: 600px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+        .cta {
+            margin-top: 20px;
+        }
+        .cta button {
+            display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #04AA6D;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+        }
+        .cta button:hover {background-color: #3e8e41}
+        .cta button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+        p {
+            font-size: smaller;
+        }
+    </style>
+    <script>
+        function toggleMenu() {
+            const nav = document.querySelector('nav ul');
+            nav.classList.toggle('active');
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <img src="DALL_E-2025-01-13-12.41.16-A-simple-and-minimalistic-logo-design-for-ServiLuck-Cleaning-Service-removebg-preview.png" alt="ServiLuck Logo" class="logo">
+        <nav>
+            <span class="menu-icon" onclick="toggleMenu()">☰</span>
+            <ul>
+                <li><a href="#welcome">Welcome</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#checklist">Cleaning Checklist</a></li>
+                <li><a href="#booking">Booking</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="welcome" class="welcome-section">
+        <div class="welcome-text">
+            <h1>Welcome to ServiLuck Cleaning</h1>
+            <p>At ServiLuck Cleaning Service, we believe a clean space is a happy space! Whether you’re looking for a quick refresh, a detailed deep clean, or a stress-free move-in/move-out experience, we’ve got you covered.</p>
+            <p>Our passion is turning messy spaces into spotless havens, giving you more time to focus on the things that matter most.</p>
+        </div>
+        <div class="cta">
+            <button onclick="window.location.href='#booking'">Book Now</button>
+        </div>
+    </section>
+
+    <section id="services" class="alternate-grey">
+        <h2 style="text-align: center;">Our Services</h2>
+        <div class="service">
+            <div class="service-card">
+                <h3>Basic Cleaning</h3>
+                <p>Life gets busy, and maintaining a tidy home or office can be challenging. Our <b>Basic Cleaning</b> service is designed to keep your space looking fresh and organized with minimal effort from you. Whether it’s your weekly touch-up or a quick refresh, we’ll take care of the essentials so you can focus on what matters most.</p>
+            </div>
+            <div class="service-card">
+                <h3>Deep Cleaning</h3>
+                <p>When was the last time your space got the attention it truly deserves? Our <b>Deep Cleaning</b> service goes beyond the surface, tackling hidden dirt, stubborn stains, and built-up grime. Whether it’s for a special occasion or a fresh start, we’ll leave your home or office spotless and revitalized, top to bottom.</p>
+            </div>
+            <div class="service-card">
+                <h3>Move-In/Out Cleaning</h3>
+                <p>Moving can be stressful enough without worrying about the cleaning. Our <b>Move-In/Out Cleaning</b> service is tailored to make your transition smooth and hassle-free. From scrubbing every corner to ensuring the space is sparkling, we help you leave a great impression or settle into a fresh, clean environment.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="checklist" class="checklist-section">
+        <div>
+            <h3>Living Areas & Bedrooms</h3>
+            <ul>
+                <li>Dusting and wiping of all surfaces (including windowsills and baseboards)</li>
+                <li>Vacuuming and mopping of floors</li>
+                <li>Cobweb removal</li>
+                <li>Ceiling fan and light fixture dusting</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Kitchen</h3>
+            <ul>
+                <li>Full cleaning of countertops, backsplash, and sink</li>
+                <li>Exterior and interior cleaning of cabinets and drawers</li>
+                <li>Inside and outside oven and refrigerator cleaning</li>
+                <li>Stovetop, hood, and appliance cleaning</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Bathrooms</h3>
+            <ul>
+                <li>Sanitizing of toilets, sinks, tubs, and showers</li>
+                <li>Detailed scrubbing of tiles and grout</li>
+                <li>Mirror, countertop, and cabinet cleaning</li>
+                <li>Floor cleaning and deodorizing</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="booking" class="booking alternate-grey">
+        <h2>Book a Service</h2>
+        <form id="bookingForm" onsubmit="sendToWhatsApp(event)">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <input type="date" id="date" required>
+            <select id="service" required>
+                <option value="" disabled selected>Select a Service</option>
+                <option value="Basic Cleaning">Basic Cleaning</option>
+                <option value="Deep Cleaning">Deep Cleaning</option>
+                <option value="Move-In/Out Cleaning">Move-In/Out Cleaning</option>
+            </select>
+            <button type="submit">Proceed to Booking</button>
+        </form>
+    </section>
+    <script>
+        function sendToWhatsApp(event) {
+            event.preventDefault(); // Prevent form from submitting normally
+    
+            // Gather form data
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const date = document.getElementById('date').value;
+            const service = document.getElementById('service').value;
+    
+            // Build WhatsApp message URL
+            const whatsappUrl = `https://wa.me/601140467617?text=Booking%20Details:%0A%0AName:%20${encodeURIComponent(name)}%0AEmail:%20${encodeURIComponent(email)}%0ADate:%20${encodeURIComponent(date)}%0AService:%20${encodeURIComponent(service)}`;
+    
+            // Redirect to WhatsApp
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+        
+
+    <footer>
+        <p>&copy; 2025 ServiLuck Cleaning Service. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
+
