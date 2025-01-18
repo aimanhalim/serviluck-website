@@ -368,6 +368,23 @@
     // Initialize the slider on page load
     showSlide(currentSlide);
     initializeSlider();
+
+    // Toggle the navigation menu for mobile
+    function toggleMenu() {
+        const navMenu = document.querySelector('nav ul');
+        navMenu.classList.toggle('active');
+    }
+
+    // Close the menu when clicking outside (optional, for better UX)
+    document.addEventListener('click', (event) => {
+        const navMenu = document.querySelector('nav ul');
+        const menuIcon = document.querySelector('.menu-icon');
+
+        // If the click is outside the menu and menu icon, close the menu
+        if (!navMenu.contains(event.target) && !menuIcon.contains(event.target)) {
+            navMenu.classList.remove('active');
+        }
+    });
     </script>
 </body>
 </html>
