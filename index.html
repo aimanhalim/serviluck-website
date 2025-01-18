@@ -57,13 +57,14 @@
         }
         nav ul li a {
             text-decoration: none;
-            color: #333;
+            color: #ffffffe7;
             padding: 10px 15px;
             transition: background-color 0.3s, color 0.3s;
+            text-shadow: rgb(88, 88, 88) 1px 0 10px;
         }
         nav ul li a:hover {
             background-color: transparent;
-            color: #006400;
+            color: #00000098;
             border-radius: 5px;
         }
         @media (max-width: 768px) {
@@ -138,44 +139,44 @@
             width: 300px;
         }
         .booking button {
-  display: inline-block;
-  border-radius: 4px;
-  background-color: #f4511e;
-  border: none;
-  color: #FFFFFF;
-  text-align: center;
-  font-size: 28px;
-  padding: 20px;
-  width: 200px;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin: 5px;
-}
+            display: inline-block;
+            border-radius: 4px;
+            background-color: #f4511e;
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 28px;
+            padding: 20px;
+            width: 200px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 5px;
+        }
 
-.booking button span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-}
+        .booking button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
 
-.booking button span:after {
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
-}
+        .booking button span:after {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
 
-.booking button:hover span {
-  padding-right: 25px;
-}
+        .booking button:hover span {
+            padding-right: 25px;
+        }
 
-.booking button:hover span:after {
-  opacity: 1;
-  right: 0;
-}
+        .booking button:hover span:after {
+            opacity: 1;
+            right: 0;
+        }
         footer {
             background-color: white;
             color: #333;
@@ -228,24 +229,24 @@
         }
         .cta button {
             display: inline-block;
-  padding: 15px 25px;
-  font-size: 24px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #04AA6D;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;
+            padding: 15px 25px;
+            font-size: 24px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #04AA6D;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #999;
         }
         .cta button:hover {background-color: #3e8e41}
         .cta button:active {
-  background-color: #3e8e41;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
-}
+            background-color: #3e8e41;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
 
         p {
             font-size: smaller;
@@ -268,7 +269,7 @@
                 <li><a href="#services">Services</a></li>
                 <li><a href="#checklist">Cleaning Checklist</a></li>
                 <li><a href="#booking">Booking</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a target="_self" href="portfolio.html">Portfolio</a></li>
             </ul>
         </nav>
     </header>
