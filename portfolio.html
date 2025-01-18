@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - ServiLuck Cleaning Service</title>
+    <link rel="icon" href="asdasd.png" type="image/png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            background-color: rgba(60, 80, 60, 0.3);
+            color: #333;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(15px);
+            height: 65px;
+        }
+        .logo {
+            max-width: 100px;
+            height: auto;
+            margin-right: 20px;
+        }
+        @media (max-width: 768px) {
+            .logo {
+                max-width: 70px;
+            }
+        }
+        nav {
+            position: relative;
+        }
+        .menu-icon {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+        nav ul li {
+            display: inline;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #ffffffe7;
+            padding: 10px 15px;
+            transition: background-color 0.3s, color 0.3s;
+            text-shadow: rgb(88, 88, 88) 1px 0 10px;
+        }
+        nav ul li a:hover {
+            background-color: transparent;
+            color: #00000098;
+            border-radius: 5px;
+        }
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block;
+            }
+            nav ul {
+                display: none;
+                flex-direction: column;
+                background-color: white;
+                position: absolute;
+                top: 65px;
+                right: 0;
+                width: 200px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+            nav ul.active {
+                display: flex;
+            }
+            nav ul li {
+                text-align: right;
+            }
+            nav ul li a {
+                display: block;
+                padding: 10px;
+            }
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        @media (max-width: 768px) {
+            .portfolio-section img {
+                width: calc(50% - 10px); /* 2 images per row on smaller screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .portfolio-section img {
+                width: calc(100% - 10px); /* 1 image per row on very small screens */
+            }
+        }
+        .portfolio-section {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 15px 0;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-wrap: wrap; /* Allow wrapping of images into rows */
+            justify-content: space-between; /* Add spacing between images */
+        }
+        .portfolio-section h2 {
+            color: #4CAF50;
+        }
+        .portfolio-section img {
+            max-width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            width: calc(25% - 10px); /* 3 images per row with small spacing */
+            height: auto; /* Maintain aspect ratio */
+            margin: 5px;
+            border-radius: 5px;
+            object-fit: cover; /* Ensure images look uniform */
+            display: inline-block; /* Prevent extra whitespace issues */
+        }
+        .testimonial-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: none;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+            max-width: 600px;
+            margin: 30px auto;
+            box-shadow: none;
+        }
+        .testimonial-section h2 {
+            text-align: center;
+            color: #4CAF50;
+        }
+        .testimonial-slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .testimonial {
+            min-width: 100%;
+            box-sizing: border-box;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .testimonial-arrow {
+            position: absolute;
+            top: 65%;
+            transform: translateY(-50%);
+            font-size: 1rem;
+            color: rgba(0, 0, 0, 0.438);
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        .testimonial-arrow.left {
+            left: -60px;
+        }
+        .testimonial-arrow.right {
+            right: -60px;
+        }
+        .testimonial-arrow:hover {
+            color: #555;
+        }
+        footer {
+            background-color: white;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+        ul {
+            text-align: left;
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+        ul li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="DALL_E-2025-01-13-12.41.16-A-simple-and-minimalistic-logo-design-for-ServiLuck-Cleaning-Service-removebg-preview.png" alt="ServiLuck Logo" class="logo">
+        <nav>
+            <span class="menu-icon" onclick="toggleMenu()">☰</span>
+            <ul>
+                <li><a href="index.html">Welcome</a></li>
+                <li><a href="index.html #services">Services</a></li>
+                <li><a href="index.html #checklist">Cleaning Checklist</a></li>
+                <li><a href="index.html #booking">Booking</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <!-- Portfolio Section 1 -->
+        <div class="portfolio-section">
+            <h2>Selesa Jaya</h2>
+            <img src="Selesa Jaya 1.jpg" alt="Project 1">
+            <img src="Selesa Jaya 5.jpg" alt="Project 1">
+            <img src="Selesa Jaya 9.jpg" alt="Project 1">
+            <img src="Selesa Jaya 4.jpg" alt="Project 1">
+            <img src="Selesa Jaya 7.jpg" alt="Project 1">
+            <img src="Selesa Jaya 3.jpg" alt="Project 1">
+            <img src="Selesa Jaya 6.jpg" alt="Project 1">
+            <img src="Selesa Jaya 2.jpg" alt="Project 1">
+            <img src="Selesa Jaya 8.jpg" alt="Project 1">
+        </div>
+
+        <!-- Portfolio Section 2 -->
+        <div class="portfolio-section">
+            <h2>Jalan Serama</h2>
+            <img src="Serama 1.jpg" alt="Project 2">
+            <img src="Serama 3.jpg" alt="Project 2">
+            <img src="Serama 2.jpg" alt="Project 2">
+            <img src="Serama 4.jpg" alt="Project 2">
+            <img src="Serama 5.jpg" alt="Project 2">
+        </div>
+
+        <!-- Portfolio Section 3 -->
+        <div class="portfolio-section">
+            <h2>Skudai</h2>
+            <img src="Skudai 3.jpg" alt="Project 3">
+            <img src="Skudai 4.jpg" alt="Project 3">
+            <img src="Skudai 6.jpg" alt="Project 3">
+            <img src="Skudai 1.jpg" alt="Project 3">
+            <img src="Skudai 5.jpg" alt="Project 3">
+            <img src="Skudai 2.jpg" alt="Project 3">
+            <img src="Skudai 7.jpg" alt="Project 3">
+        </div>
+
+
+        <!-- Testimonial Section -->
+        <div class="testimonial-section">
+            <h2>What Our Clients Say</h2>
+            <div class="testimonial-slider" id="testimonialSlider">
+                <div class="testimonial">
+                    <p>"Alhamdulilah, Terima kasih ya memberi perkhidmatan cleaning di rumah saya."</p>
+                    <p>- Puan Noraini</p>
+                </div>
+                <div class="testimonial">
+                    <p>"Good job for the cleaning team"</p>
+                    <p>- Mr Chia</p>
+                </div>
+                <div class="testimonial">
+                    <p>"Excellent service! They left my shoplot spotless and shining."</p>
+                    <p>- Ali Khan</p>
+                </div>
+                <div class="testimonial">
+                    <p>"Very satisfied with the move-out cleaning service. Will definitely hire them again."</p>
+                    <p>- Sarah Lee</p>
+                </div>
+            </div>
+            <button class="testimonial-arrow left" onclick="prevSlide()">&lt;</button>
+            <button class="testimonial-arrow right" onclick="nextSlide()">&gt;</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 ServiLuck Cleaning Service. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let currentSlide = 0;
+        let autoSlideInterval;
+        const slider = document.getElementById('testimonialSlider');
+
+        function showSlide(index) {
+            const slides = slider.children.length;
+            if (index >= slides) currentSlide = 0;
+            else if (index < 0) currentSlide = slides - 1;
+            else currentSlide = index;
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(nextSlide, 5000);
+        }
+
+        function stopAutoSlide() {
+            clearInterval(autoSlideInterval);
+        }
+
+        // Initialize the first slide and start auto slide
+        showSlide(currentSlide);
+        startAutoSlide();
+    </script>
+</body>
+</html>
+
+
