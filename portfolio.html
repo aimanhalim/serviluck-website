@@ -284,36 +284,90 @@
 
     <script>
         let currentSlide = 0;
-        let autoSlideInterval;
-        const slider = document.getElementById('testimonialSlider');
+    const slider = document.getElementById('testimonialSlider');
+    const totalSlides = slider.children.length; // Number of testimonials
+    let autoSlideInterval; // Variable for the auto-slide interval
+    let startX = 0, endX = 0; // Variables for swipe handling
 
-        function showSlide(index) {
-            const slides = slider.children.length;
-            if (index >= slides) currentSlide = 0;
-            else if (index < 0) currentSlide = slides - 1;
-            else currentSlide = index;
-            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+    // Function to show the current slide
+    function showSlide(index) {
+        if (index >= totalSlides) currentSlide = 0; // Loop back to the first slide
+        else if (index < 0) currentSlide = totalSlides - 1; // Loop to the last slide
+        else currentSlide = index;
+
+        slider.style.transform = `translateX(-${currentSlide * 100}%)`; // Move the slider
+    }
+
+    // Navigate to the next slide
+    function nextSlide() {
+        showSlide(currentSlide + 1);
+    }
+
+    // Auto-slide functionality
+    function startAutoSlide() {
+        stopAutoSlide(); // Clear any existing interval first
+        autoSlideInterval = setInterval(nextSlide, 5000); // Slide every 5 seconds
+    }
+
+    function stopAutoSlide() {
+        clearInterval(autoSlideInterval);
+    }
+
+    // Detect if the screen is mobile
+    function isMobile() {
+        return window.innerWidth < 768; // Mobile if screen width is less than 768px
+    }
+
+    // Enable swipe gestures for mobile
+    function enableSwipeGestures() {
+        slider.addEventListener('touchstart', handleTouchStart, { passive: true });
+        slider.addEventListener('touchmove', handleTouchMove, { passive: true });
+        slider.addEventListener('touchend', handleTouchEnd);
+    }
+
+    function disableSwipeGestures() {
+        slider.removeEventListener('touchstart', handleTouchStart);
+        slider.removeEventListener('touchmove', handleTouchMove);
+        slider.removeEventListener('touchend', handleTouchEnd);
+    }
+
+    // Handle swipe gestures
+    function handleTouchStart(e) {
+        startX = e.touches[0].clientX; // Store the starting X position
+    }
+
+    function handleTouchMove(e) {
+        endX = e.touches[0].clientX; // Update the current X position
+    }
+
+    function handleTouchEnd() {
+        const threshold = 50; // Minimum distance for a valid swipe
+        if (startX - endX > threshold) {
+            nextSlide(); // Swipe left: Go to the next slide
+        } else if (endX - startX > threshold) {
+            showSlide(currentSlide - 1); // Swipe right: Go to the previous slide
+        }
+    }
+
+    // Initialize the slider based on the screen size
+    function initializeSlider() {
+        if (isMobile()) {
+            enableSwipeGestures(); // Enable swipe gestures for mobile
+        } else {
+            disableSwipeGestures(); // Disable swipe gestures for desktop
         }
 
-        function nextSlide() {
-            showSlide(currentSlide + 1);
-        }
+        startAutoSlide(); // Auto-slide for both desktop and mobile
+    }
 
-        function prevSlide() {
-            showSlide(currentSlide - 1);
-        }
+    // Event listener for window resize
+    window.addEventListener('resize', () => {
+        initializeSlider(); // Reinitialize the slider on screen resize
+    });
 
-        function startAutoSlide() {
-            autoSlideInterval = setInterval(nextSlide, 5000);
-        }
-
-        function stopAutoSlide() {
-            clearInterval(autoSlideInterval);
-        }
-
-        // Initialize the first slide and start auto slide
-        showSlide(currentSlide);
-        startAutoSlide();
+    // Initialize the slider on page load
+    showSlide(currentSlide);
+    initializeSlider();
     </script>
 </body>
 </html>
