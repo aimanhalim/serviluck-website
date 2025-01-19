@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ServiLuck Cleaning Service</title>
+    <title>Portfolio - ServiLuck Cleaning Service</title>
     <link rel="icon" href="asdasd.png" type="image/png">
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f8f9f8;
+            background-color: #f9f9f9;
             color: #333;
         }
         header {
@@ -74,7 +73,8 @@
             nav ul {
                 display: none;
                 flex-direction: column;
-                background-color: rgb(95, 90, 90);
+                background-color: rgba(95, 90, 90, 0.644);
+                backdrop-filter: blur (15px);
                 position: absolute;
                 top: 65px;
                 right: 0;
@@ -92,90 +92,96 @@
                 padding: 10px;
             }
         }
-        section {
-            padding: 40px;
-            background-color: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin: 20px;
-            border-radius: 10px;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
-        .alternate-grey {
-            background-color: #f0f0f0;
-            margin: 40px;
-            padding: 50px;
+        @media (max-width: 768px) {
+            .portfolio-section img {
+                width: calc(50% - 10px); /* 2 images per row on smaller screens */
+            }
         }
-        .service {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
+
+        @media (max-width: 480px) {
+            .portfolio-section img {
+                width: calc(100% - 10px); /* 1 image per row on very small screens */
+            }
         }
-        .service-card {
-            background-color: white;
+        .portfolio-section {
+            background: white;
             border: 1px solid #ddd;
-            border-radius: 10px;
-            padding: 20px;
-            width: 300px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-        .service-card:hover {
-            transform: scale(1.05);
-        }
-        .booking {
-            margin-top: 40px;
-        }
-        .booking form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-        }
-        .booking input, .booking select, .booking button {
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
             border-radius: 5px;
-            width: 300px;
+            margin: 15px 0;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-wrap: wrap; /* Allow wrapping of images into rows */
+            justify-content: space-between; /* Add spacing between images */
         }
-        .booking button {
-            display: inline-block;
-            border-radius: 4px;
-            background-color: #f4511e;
-            border: none;
-            color: #FFFFFF;
-            text-align: center;
-            font-size: 28px;
-            padding: 20px;
-            width: 200px;
-            transition: all 0.5s;
-            cursor: pointer;
+        .portfolio-section h2 {
+            color: #4CAF50;
+        }
+        .portfolio-section img {
+            max-width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            width: calc(25% - 10px); /* 3 images per row with small spacing */
+            height: auto; /* Maintain aspect ratio */
             margin: 5px;
+            border-radius: 5px;
+            object-fit: cover; /* Ensure images look uniform */
+            display: inline-block; /* Prevent extra whitespace issues */
         }
-
-        .booking button span {
-            cursor: pointer;
-            display: inline-block;
+        .testimonial-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: none;
+            border-radius: 5px;
+            overflow: hidden;
             position: relative;
-            transition: 0.5s;
+            max-width: 600px;
+            margin: 30px auto;
+            box-shadow: none;
         }
-
-        .booking button span:after {
-            content: '\00bb';
+        .testimonial-section h2 {
+            text-align: center;
+            color: #4CAF50;
+        }
+        .testimonial-slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .testimonial {
+            min-width: 100%;
+            box-sizing: border-box;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .testimonial-arrow {
             position: absolute;
-            opacity: 0;
-            top: 0;
-            right: -20px;
-            transition: 0.5s;
+            top: 65%;
+            transform: translateY(-50%);
+            font-size: 1rem;
+            color: rgba(0, 0, 0, 0.438);
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 1000;
         }
-
-        .booking button:hover span {
-            padding-right: 25px;
+        .testimonial-arrow.left {
+            left: -60px;
         }
-
-        .booking button:hover span:after {
-            opacity: 1;
-            right: 0;
+        .testimonial-arrow.right {
+            right: -60px;
+        }
+        .testimonial-arrow:hover {
+            color: #555;
         }
         footer {
             background-color: white;
@@ -192,72 +198,7 @@
         ul li {
             margin-bottom: 8px;
         }
-        .checklist-section {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-        }
-        @media (max-width: 768px) {
-            .checklist-section {
-                flex-direction: column;
-            }
-        }
-        .checklist-section > div {
-            flex: 1;
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .welcome-section {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 400px;
-            text-align: center;
-            color: white;
-            background: linear-gradient(rgba(0, 0, 0, 0.205), rgba(0, 0, 0, 0.486)), url('wet-mopping.jpeg') no-repeat center center/cover;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
-        .welcome-text {
-            max-width: 600px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-        }
-        .cta {
-            margin-top: 20px;
-        }
-        .cta button {
-            display: inline-block;
-            padding: 15px 25px;
-            font-size: 24px;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            outline: none;
-            color: #fff;
-            background-color: #04AA6D;
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 9px #999;
-        }
-        .cta button:hover {background-color: #3e8e41}
-        .cta button:active {
-            background-color: #3e8e41;
-            box-shadow: 0 5px #666;
-            transform: translateY(4px);
-        }
-
-        p {
-            font-size: smaller;
-        }
     </style>
-    <script>
-        function toggleMenu() {
-            const nav = document.querySelector('nav ul');
-            nav.classList.toggle('active');
-        }
-    </script>
 </head>
 <body>
     <header>
@@ -265,114 +206,187 @@
         <nav>
             <span class="menu-icon" onclick="toggleMenu()">☰</span>
             <ul>
-                <li><a href="#welcome">Welcome</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#checklist">Cleaning Checklist</a></li>
-                <li><a href="#booking">Booking</a></li>
-                <li><a target="_self" href="portfolio.html">Portfolio</a></li>
+                <li><a href="index.html">Welcome</a></li>
+                <li><a href="index.html #services">Services</a></li>
+                <li><a href="index.html #checklist">Cleaning Checklist</a></li>
+                <li><a href="index.html #booking">Booking</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
             </ul>
         </nav>
     </header>
 
-    <section id="welcome" class="welcome-section">
-        <div class="welcome-text">
-            <h1>Welcome to ServiLuck Cleaning</h1>
-            <p>At ServiLuck Cleaning Service, we believe a clean space is a happy space! Whether you’re looking for a quick refresh, a detailed deep clean, or a stress-free move-in/move-out experience, we’ve got you covered.</p>
-            <p>Our passion is turning messy spaces into spotless havens, giving you more time to focus on the things that matter most.</p>
+    <div class="container">
+        <!-- Portfolio Section 1 -->
+        <div class="portfolio-section">
+            <h2>Selesa Jaya</h2>
+            <img src="Selesa Jaya 1.jpg" alt="Project 1">
+            <img src="Selesa Jaya 5.jpg" alt="Project 1">
+            <img src="Selesa Jaya 9.jpg" alt="Project 1">
+            <img src="Selesa Jaya 4.jpg" alt="Project 1">
+            <img src="Selesa Jaya 7.jpg" alt="Project 1">
+            <img src="Selesa Jaya 3.jpg" alt="Project 1">
+            <img src="Selesa Jaya 6.jpg" alt="Project 1">
+            <img src="Selesa Jaya 2.jpg" alt="Project 1">
+            <img src="Selesa Jaya 8.jpg" alt="Project 1">
         </div>
-        <div class="cta">
-            <button onclick="window.location.href='#booking'">Book Now</button>
-        </div>
-    </section>
 
-    <section id="services" class="alternate-grey">
-        <h2 style="text-align: center;">Our Services</h2>
-        <div class="service">
-            <div class="service-card">
-                <img src="rsp-detail-tineco-pure-one-s11-tango-smart-stick-handheld-vacuum-at-tineco-hwortock-0015-8885297ca9724189a2124fd3ca15225a.jpg" alt="Basic Cleaning" style="width: 100%; border-radius: 10px;">
-                <h3>Basic Cleaning</h3>
-                <p>Life gets busy, and maintaining a tidy home or office can be challenging. Our <b>Basic Cleaning</b> service is designed to keep your space looking fresh and organized with minimal effort from you. Whether it’s your weekly touch-up or a quick refresh, we’ll take care of the essentials so you can focus on what matters most.</p>
-            </div>
-            <div class="service-card">
-                <img src="how-to-clean-a-microwave-with-lemon-5199448-08-0d101e3a0a194224944bf403ed8b889b.jpg" alt="Basic Cleaning" style="width: 100%; border-radius: 10px;">
-                <h3>Deep Cleaning</h3>
-                <p>When was the last time your space got the attention it truly deserves? Our <b>Deep Cleaning</b> service goes beyond the surface, tackling hidden dirt, stubborn stains, and built-up grime. Whether it’s for a special occasion or a fresh start, we’ll leave your home or office spotless and revitalized, top to bottom.</p>
-            </div>
-            <div class="service-card">
-                <img src="download.webp" alt="Basic Cleaning" style="width: 100%; border-radius: 10px;">
-                <h3>Move-In/Out Cleaning</h3>
-                <p>Moving can be stressful enough without worrying about the cleaning. Our <b>Move-In/Out Cleaning</b> service is tailored to make your transition smooth and hassle-free. From scrubbing every corner to ensuring the space is sparkling, we help you leave a great impression or settle into a fresh, clean environment.</p>
-            </div>
+        <!-- Portfolio Section 2 -->
+        <div class="portfolio-section">
+            <h2>Jalan Serama</h2>
+            <img src="Serama 1.jpg" alt="Project 2">
+            <img src="Serama 3.jpg" alt="Project 2">
+            <img src="Serama 2.jpg" alt="Project 2">
+            <img src="Serama 4.jpg" alt="Project 2">
+            <img src="Serama 5.jpg" alt="Project 2">
         </div>
-    </section>
 
-    <section id="checklist" class="checklist-section">
-        <div>
-            <h3>Living Areas & Bedrooms</h3>
-            <ul>
-                <li>Dusting and wiping of all surfaces (including windowsills and baseboards)</li>
-                <li>Vacuuming and mopping of floors</li>
-                <li>Cobweb removal</li>
-                <li>Ceiling fan and light fixture dusting</li>
-            </ul>
+        <!-- Portfolio Section 3 -->
+        <div class="portfolio-section">
+            <h2>Skudai</h2>
+            <img src="Skudai 3.jpg" alt="Project 3">
+            <img src="Skudai 4.jpg" alt="Project 3">
+            <img src="Skudai 6.jpg" alt="Project 3">
+            <img src="Skudai 1.jpg" alt="Project 3">
+            <img src="Skudai 5.jpg" alt="Project 3">
+            <img src="Skudai 2.jpg" alt="Project 3">
+            <img src="Skudai 7.jpg" alt="Project 3">
         </div>
-        <div>
-            <h3>Kitchen</h3>
-            <ul>
-                <li>Full cleaning of countertops, backsplash, and sink</li>
-                <li>Exterior and interior cleaning of cabinets and drawers</li>
-                <li>Inside and outside oven and refrigerator cleaning</li>
-                <li>Stovetop, hood, and appliance cleaning</li>
-            </ul>
-        </div>
-        <div>
-            <h3>Bathrooms</h3>
-            <ul>
-                <li>Sanitizing of toilets, sinks, tubs, and showers</li>
-                <li>Detailed scrubbing of tiles and grout</li>
-                <li>Mirror, countertop, and cabinet cleaning</li>
-                <li>Floor cleaning and deodorizing</li>
-            </ul>
-        </div>
-    </section>
 
-    <section id="booking" class="booking alternate-grey">
-        <h2>Book a Service</h2>
-        <form id="bookingForm" onsubmit="sendToWhatsApp(event)">
-            <input type="text" id="name" placeholder="Your Name" required>
-            <input type="email" id="email" placeholder="Your Email" required>
-            <input type="date" id="date" required>
-            <select id="service" required>
-                <option value="" disabled selected>Select a Service</option>
-                <option value="Basic Cleaning">Basic Cleaning</option>
-                <option value="Deep Cleaning">Deep Cleaning</option>
-                <option value="Move-In/Out Cleaning">Move-In/Out Cleaning</option>
-            </select>
-            <button type="submit">Proceed to Booking</button>
-        </form>
-    </section>
-    <script>
-        function sendToWhatsApp(event) {
-            event.preventDefault(); // Prevent form from submitting normally
-    
-            // Gather form data
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const date = document.getElementById('date').value;
-            const service = document.getElementById('service').value;
-    
-            // Build WhatsApp message URL
-            const whatsappUrl = https://wa.me/601140467617?text=Booking%20Details:%0A%0AName:%20${encodeURIComponent(name)}%0AEmail:%20${encodeURIComponent(email)}%0ADate:%20${encodeURIComponent(date)}%0AService:%20${encodeURIComponent(service)};
-    
-            // Redirect to WhatsApp
-            window.open(whatsappUrl, '_blank');
-        }
-    </script>
-        
+
+        <!-- Testimonial Section -->
+        <div class="testimonial-section">
+            <h2>What Our Clients Say</h2>
+            <div class="testimonial-slider" id="testimonialSlider">
+                <div class="testimonial">
+                    <p>"Alhamdulilah, Terima kasih ya memberi perkhidmatan cleaning di rumah saya."</p>
+                    <p>- Puan Noraini</p>
+                </div>
+                <div class="testimonial">
+                    <p>"Good job for the cleaning team"</p>
+                    <p>- Mr Chia</p>
+                </div>
+                <div class="testimonial">
+                    <p>"Excellent service! They left my shoplot spotless and shining."</p>
+                    <p>- Ali Khan</p>
+                </div>
+                <div class="testimonial">
+                    <p>"Very satisfied with the move-out cleaning service. Will definitely hire them again."</p>
+                    <p>- Sarah Lee</p>
+                </div>
+            </div>
+            <button class="testimonial-arrow left" onclick="prevSlide()">&lt;</button>
+            <button class="testimonial-arrow right" onclick="nextSlide()">&gt;</button>
+        </div>
+    </div>
 
     <footer>
-        <p>&copy; 2025 ServiLuck Cleaning Service. All Rights Reserved.</p>
+        <p>&copy; 2025 ServiLuck Cleaning Service. All rights reserved.</p>
     </footer>
+
+    <script>
+        let currentSlide = 0;
+    const slider = document.getElementById('testimonialSlider');
+    const totalSlides = slider.children.length; // Number of testimonials
+    let autoSlideInterval; // Variable for the auto-slide interval
+    let startX = 0, endX = 0; // Variables for swipe handling
+
+    // Function to show the current slide
+    function showSlide(index) {
+        if (index >= totalSlides) currentSlide = 0; // Loop back to the first slide
+        else if (index < 0) currentSlide = totalSlides - 1; // Loop to the last slide
+        else currentSlide = index;
+
+        slider.style.transform = `translateX(-${currentSlide * 100}%)`; // Move the slider
+    }
+
+    // Navigate to the next slide
+    function nextSlide() {
+        showSlide(currentSlide + 1);
+    }
+
+    // Auto-slide functionality
+    function startAutoSlide() {
+        stopAutoSlide(); // Clear any existing interval first
+        autoSlideInterval = setInterval(nextSlide, 5000); // Slide every 5 seconds
+    }
+
+    function stopAutoSlide() {
+        clearInterval(autoSlideInterval);
+    }
+
+    // Detect if the screen is mobile
+    function isMobile() {
+        return window.innerWidth < 768; // Mobile if screen width is less than 768px
+    }
+
+    // Enable swipe gestures for mobile
+    function enableSwipeGestures() {
+        slider.addEventListener('touchstart', handleTouchStart, { passive: true });
+        slider.addEventListener('touchmove', handleTouchMove, { passive: true });
+        slider.addEventListener('touchend', handleTouchEnd);
+    }
+
+    function disableSwipeGestures() {
+        slider.removeEventListener('touchstart', handleTouchStart);
+        slider.removeEventListener('touchmove', handleTouchMove);
+        slider.removeEventListener('touchend', handleTouchEnd);
+    }
+
+    // Handle swipe gestures
+    function handleTouchStart(e) {
+        startX = e.touches[0].clientX; // Store the starting X position
+    }
+
+    function handleTouchMove(e) {
+        endX = e.touches[0].clientX; // Update the current X position
+    }
+
+    function handleTouchEnd() {
+        const threshold = 50; // Minimum distance for a valid swipe
+        if (startX - endX > threshold) {
+            nextSlide(); // Swipe left: Go to the next slide
+        } else if (endX - startX > threshold) {
+            showSlide(currentSlide - 1); // Swipe right: Go to the previous slide
+        }
+    }
+
+    // Initialize the slider based on the screen size
+    function initializeSlider() {
+        if (isMobile()) {
+            enableSwipeGestures(); // Enable swipe gestures for mobile
+        } else {
+            disableSwipeGestures(); // Disable swipe gestures for desktop
+        }
+
+        startAutoSlide(); // Auto-slide for both desktop and mobile
+    }
+
+    // Event listener for window resize
+    window.addEventListener('resize', () => {
+        initializeSlider(); // Reinitialize the slider on screen resize
+    });
+
+    // Initialize the slider on page load
+    showSlide(currentSlide);
+    initializeSlider();
+
+    // Toggle the navigation menu for mobile
+    function toggleMenu() {
+        const navMenu = document.querySelector('nav ul');
+        navMenu.classList.toggle('active');
+    }
+
+    // Close the menu when clicking outside (optional, for better UX)
+    document.addEventListener('click', (event) => {
+        const navMenu = document.querySelector('nav ul');
+        const menuIcon = document.querySelector('.menu-icon');
+
+        // If the click is outside the menu and menu icon, close the menu
+        if (!navMenu.contains(event.target) && !menuIcon.contains(event.target)) {
+            navMenu.classList.remove('active');
+        }
+    });
+    </script>
 </body>
 </html>
 
